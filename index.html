@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Chambre de Commerce Luxembourg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f1f1f1; color: #222; }
+    header {
+      background: #003366; color: white; padding: 2rem 0 1rem 0; text-align: center; position: relative;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .logo { max-width: 240px; margin: 0 auto; display: block; }
+    .language-picker {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      z-index: 3;
+    }
+    .language-picker select {
+      padding: 0.35em 1em;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #efefef;
+      background: #fff;
+      color: #003366;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+      cursor: pointer;
+    }
+    main { max-width: 900px; margin: 2rem auto; background: white; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); padding: 2rem; }
+    h2 { color: #003366; margin-top: 2rem; }
+    .btn { display: inline-block; background: #0072bc; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; text-decoration: none; font-weight: bold; margin: 1rem 0; transition: background 0.2s; }
+    .btn:hover { background: #003366; }
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+    footer { text-align: center; background: #003366; color: white; padding: 1rem 0; margin-top: 3rem; font-size: 0.95em; }
+  </style>
+  <script>
+    function activateLanguage(lang) {
+      document.querySelectorAll('.lang-section').forEach(s=>s.classList.remove('active'));
+      document.getElementById('lang-'+lang).classList.add('active');
+      document.querySelector('.language-picker select').value = lang;
+      document.documentElement.lang = lang;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const picker = document.querySelector('.language-picker select');
+      let hash = window.location.hash.replace('#','');
+      picker.addEventListener('change', function() {
+        activateLanguage(this.value);
+        window.location.hash = '#' + this.value;
+      });
+      if(hash && document.getElementById('lang-'+hash)) {
+        activateLanguage(hash);
+        picker.value = hash;
+      } else {
+        activateLanguage('fr');
+        picker.value = 'fr';
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="language-picker">
+      <select>
+        <option value="fr">Français</option>
+        <option value="lb">Lëtzebuergesch</option>
+        <option value="de">Deutsch</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    <img src="ccl logo.png" alt="Chamber of Commerce Luxembourg" class="logo">
+  </header>
+  <main>
+    <!-- French -->
+    <section class="lang-section active" id="lang-fr">
+      <h1>Chambre de Commerce Luxembourg</h1>
+      <p>Votre partenaire économique au Grand-Duché de Luxembourg</p>
+      <h2>À propos</h2>
+      <p>La Chambre de Commerce Luxembourg accompagne les entreprises et favorise le développement économique du pays.<br>
+        Nous offrons des services de conseil, de formation, d'accompagnement à l'international, et bien plus encore.</p>
+      <h2>Nos services</h2>
+      <ul>
+        <li>Conseil et accompagnement aux entreprises</li>
+        <li>Formation professionnelle continue</li>
+        <li>Organisation d'événements et de réseautage</li>
+        <li>Facilitation au commerce international</li>
+        <li>Représentation des intérêts des sociétés luxembourgeoises</li>
+      </ul>
+      <h2>Contact</h2>
+      <p>
+        <strong>Adresse :</strong> 7, rue Alcide de Gasperi, L-2981 Luxembourg<br>
+        <strong>Email :</strong> info@cc.lu<br>
+        <strong>Téléphone :</strong> +352 42 39 39-1
+      </p>
+      <a class="btn" href="mailto:info@cc.lu">Envoyer un email</a>
+    </section>
+    <!-- Luxembourgish -->
+    <section class="lang-section" id="lang-lb">
+      <h1>Handelskammer Lëtzebuerg</h1>
+      <p>Äre wirtschaftleche Partner am Groussherzogtum Lëtzebuerg</p>
+      <h2>Iwwer eis</h2>
+      <p>D'Handelskammer Lëtzebuerg ënnerstëtzt Entreprisen a fördert d'wirtschaftlech Entwécklung vum Land.<br>
+        Mir bidden Berodung, Formatiounen, Begleedung an d'Ausland, an nach vill méi un.</p>
+      <h2>Eis Servicer</h2>
+      <ul>
+        <li>Berodung an Begleedung vun Firmen</li>
+        <li>Weiderbildung a Formatioun</li>
+        <li>Organisatioun vu Veranstaltungen an Networking</li>
+        <li>Ënnerstëtzung beim internationale Handel</li>
+        <li>Vertriedung vun den Interessen vun de lëtzebuergesche Gesellschaften</li>
+      </ul>
+      <h2>Kontakt</h2>
+      <p>
+        <strong>Adress:</strong> 7, rue Alcide de Gasperi, L-2981 Luxembourg<br>
+        <strong>Email:</strong> info@cc.lu<br>
+        <strong>Telefon:</strong> +352 42 39 39-1
+      </p>
+      <a class="btn" href="mailto:info@cc.lu">Mail schécken</a>
+    </section>
+    <!-- German -->
+    <section class="lang-section" id="lang-de">
+      <h1>Handelskammer Luxemburg</h1>
+      <p>Ihr Wirtschaftspartner im Großherzogtum Luxemburg</p>
+      <h2>Über uns</h2>
+      <p>Die Handelskammer Luxemburg begleitet Unternehmen und fördert die wirtschaftliche Entwicklung des Landes.<br>
+        Wir bieten Beratung, Weiterbildung, internationale Begleitung und vieles mehr an.</p>
+      <h2>Unsere Dienstleistungen</h2>
+      <ul>
+        <li>Beratung und Unterstützung für Unternehmen</li>
+        <li>Berufliche Weiterbildung</li>
+        <li>Organisation von Events und Netzwerkveranstaltungen</li>
+        <li>Förderung des internationalen Handels</li>
+        <li>Vertretung der Interessen luxemburgischer Unternehmen</li>
+      </ul>
+      <h2>Kontakt</h2>
+      <p>
+        <strong>Adresse:</strong> 7, rue Alcide de Gasperi, L-2981 Luxembourg<br>
+        <strong>Email:</strong> info@cc.lu<br>
+        <strong>Telefon:</strong> +352 42 39 39-1
+      </p>
+      <a class="btn" href="mailto:info@cc.lu">E-Mail senden</a>
+    </section>
+    <!-- English -->
+    <section class="lang-section" id="lang-en">
+      <h1>Chamber of Commerce Luxembourg</h1>
+      <p>Your economic partner in the Grand Duchy of Luxembourg</p>
+      <h2>About us</h2>
+      <p>The Chamber of Commerce Luxembourg supports businesses and promotes the country's economic development.<br>
+        We offer consulting, training, international support, and much more.</p>
+      <h2>Our services</h2>
+      <ul>
+        <li>Business consulting and support</li>
+        <li>Professional continuing education</li>
+        <li>Networking and event organization</li>
+        <li>International trade facilitation</li>
+        <li>Representation of Luxembourgish companies' interests</li>
+      </ul>
+      <h2>Contact</h2>
+      <p>
+        <strong>Address:</strong> 7, rue Alcide de Gasperi, L-2981 Luxembourg<br>
+        <strong>Email:</strong> info@cc.lu<br>
+        <strong>Phone:</strong> +352 42 39 39-1
+      </p>
+      <a class="btn" href="mailto:info@cc.lu">Send email</a>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Chambre de Commerce Luxembourg. Tous droits réservés.
+  </footer>
+</body>
+</html>
